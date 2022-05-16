@@ -32,13 +32,18 @@ namespace MVC.Controllers
             int fieldWeight = int.Parse(data["fieldWeight"]);
 
             //身高轉公尺
-            float h = (float)fieldHeight / 100;
+            //float h = (float)fieldHeight / 100;
 
             //計算BMI
-            float BmiResult = fieldWeight / (h * h);
- 
+            //float BmiResult = fieldWeight / (h * h);
+
+            //呼叫BMI
+            HealthMgr.BmiCalculator bc = new HealthMgr.BmiCalculator();
+            bc.Height = fieldHeight;
+            bc.Weight = fieldWeight;
+
             //return to view
-            ViewBag.Result = BmiResult;
+            ViewBag.Result = bc.Calculate();
             ViewBag.fieldHeight = fieldHeight;
             ViewBag.fieldWeight = fieldWeight;
             //show Page Index

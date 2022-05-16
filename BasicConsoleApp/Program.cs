@@ -24,10 +24,17 @@ namespace BasicConsoleApp
             weight = int.Parse(tmp);
 
             //身高轉公尺
-            float h = (float)height / 100;
+            //float h = (float)height / 100;
 
             //計算BMI
-            float BMI = weight / (h * h);
+            //float BMI = weight / (h * h);
+
+            //呼叫BMI
+            HealthMgr.BmiCalculator bc = new HealthMgr.BmiCalculator();
+            bc.Height = height;
+            bc.Weight = weight;
+            float BMI = bc.Calculate();
+            //顯示
             Console.WriteLine($"BMI:{BMI}");
         }
     }

@@ -30,10 +30,16 @@ namespace WebApp.Pages
         public void OnPostCalculate()
         {
             //身高轉公尺
-            float h = (float)fieldHeight / 100;
+            //float h = (float)fieldHeight / 100;
 
             //計算BMI
-            BmiResult = fieldWeight / (h * h);
+            //BmiResult = fieldWeight / (h * h);
+
+            //呼叫BMI
+            HealthMgr.BmiCalculator bc = new HealthMgr.BmiCalculator();
+            bc.Height = fieldHeight;
+            bc.Weight = fieldWeight;
+            BmiResult = bc.Calculate();
         }
     }
 }

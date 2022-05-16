@@ -12,7 +12,7 @@ namespace HealthMgr
         {
             float result = 0;
 
-            float height = Height / 100;
+            float height = (float)Height / 100;
             result = Weight / (height * height);
 
             return result;
