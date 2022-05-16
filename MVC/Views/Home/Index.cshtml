@@ -1,0 +1,30 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <form action="/Home/Calculate" method="post">
+            @Html.AntiForgeryToken()
+            <div class="card">
+                <span class="card-header bg-primary" style="color:white">
+                    計算BMI
+                </span>
+                <div class="card-body">
+                    <label>身高:</label>
+                    <input name="fieldHeight" class="form-control" type="text" value="@ViewBag.fieldHeight" />
+                    <label>體重:</label>
+                    <input name="fieldWeight" class="form-control" type="text" value="@ViewBag.fieldWeight" />
+                    <br />
+                    <button type="submit" class="btn btn-primary">計算</button>
+                    <label>
+                        BMI :  @ViewBag.Result
+                    </label>
+                </div>
+        </form>
+    </div>
