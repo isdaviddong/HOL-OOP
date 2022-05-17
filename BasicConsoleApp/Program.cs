@@ -7,7 +7,7 @@ namespace BasicConsoleApp
     {
         static void Main(string[] args)
         {
-            int height = 0, weight = 0;
+            int height = 0, weight = 0, gender = 0;
 
             // Set console encoding to unicode
             Console.InputEncoding = Encoding.Unicode;
@@ -23,6 +23,11 @@ namespace BasicConsoleApp
             tmp = Console.ReadLine();
             weight = int.Parse(tmp);
 
+            //輸入性別
+            Console.Write("請輸入性別(1:男 2:女):");
+            tmp = Console.ReadLine();
+            gender = int.Parse(tmp);
+
             //身高轉公尺
             //float h = (float)height / 100;
 
@@ -30,12 +35,29 @@ namespace BasicConsoleApp
             //float BMI = weight / (h * h);
 
             //呼叫BMI
-            HealthMgr.BmiCalculator bc = new HealthMgr.BmiCalculator();
+            MyHealthMgr bc = new MyHealthMgr();
             bc.Height = height;
             bc.Weight = weight;
+            bc.gender = gender;
             float BMI = bc.Calculate();
             //顯示
-            Console.WriteLine($"BMI:{BMI}");
+            Console.WriteLine($"BMI:{BMI} 超重: {bc.isOverWeight()}");
+        }
+    }
+
+    public class MyHealthMgr : HealthMgr.BmiCalculator
+    {
+        public int gender { get; set; } //1:男   2:女
+
+        public bool isOverWeight()
+        {
+            //throw new NotImplementedException();
+            if (gender == 1) //男性
+                if (this.BMI > 30) return true; else return false;
+            if (gender == 2) //女性
+                if (this.BMI > 29) return true; else return false;
+
+            throw new Exception("性別值未設定");
         }
     }
 }
