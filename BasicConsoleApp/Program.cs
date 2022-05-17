@@ -7,7 +7,7 @@ namespace BasicConsoleApp
     {
         static void Main(string[] args)
         {
-            int height = 0, weight = 0;
+            float height = 0, weight = 0;
 
             // Set console encoding to unicode
             Console.InputEncoding = Encoding.Unicode;
@@ -16,12 +16,12 @@ namespace BasicConsoleApp
             //輸入身高
             Console.Write("請輸入身高(cm):");
             var tmp = Console.ReadLine();
-            height = int.Parse(tmp);
+            height = float.Parse(tmp);
 
             //輸入體重
             Console.Write("請輸入體重(kg):");
             tmp = Console.ReadLine();
-            weight = int.Parse(tmp);
+            weight = float.Parse(tmp);
 
             //身高轉公尺
             //float h = (float)height / 100;
@@ -30,7 +30,7 @@ namespace BasicConsoleApp
             //float BMI = weight / (h * h);
 
             //呼叫BMI
-            HealthMgr.BmiCalculator bc = new HealthMgr.BmiCalculator();
+            HealthMgr.BmiCalculator<float> bc = new HealthMgr.BmiCalculator<float>();
             bc.Height = height;
             bc.Weight = weight;
             float BMI = bc.Calculate();

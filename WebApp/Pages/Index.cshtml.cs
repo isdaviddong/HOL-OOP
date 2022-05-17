@@ -36,7 +36,7 @@ namespace WebApp.Pages
             //BmiResult = fieldWeight / (h * h);
 
             //呼叫BMI
-            HealthMgr.BmiCalculator bc = new HealthMgr.BmiCalculator();
+            HealthMgr.BmiCalculator<int> bc = new HealthMgr.BmiCalculator<int>();
             bc.Height = fieldHeight;
             bc.Weight = fieldWeight;
             BmiResult = bc.Calculate();
