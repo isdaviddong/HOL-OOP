@@ -31,6 +31,7 @@ namespace BasicConsoleApp
 
             //呼叫BMI
             HealthMgr.BmiCalculator bc = new HealthMgr.BmiCalculator();
+            bc.onError += (obj, e) => { Console.Write("ERR:" + e); };
             bc.Height = height;
             bc.Weight = weight;
             float BMI = bc.Calculate();

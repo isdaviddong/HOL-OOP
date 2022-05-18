@@ -24,18 +24,23 @@ namespace HealthMgr
             set
             {
                 if (value <= 0)
-                    throw new Exception("身高不合法!");
+                    //throw new Exception("身高不合法!");
+                    onError.Invoke(this, "身高不合法!");
                 else
                     _Height = value;
             }
         }
         public float BMI { get { return Calculate(); } }
 
+
+        public delegate void onErrorEventHandler(object sender, string message);
+        public event onErrorEventHandler onError;
+
         public float Calculate()
         {
             float result = 0;
 
-            float height =(float) Height / 100;
+            float height = (float)Height / 100;
             result = Weight / (height * height);
 
             return result;
